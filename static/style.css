@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: white;
+  font-family: monospace;
+}
+
+.header {
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  background: #222;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+}
+
+textarea {
+  width: 90%;
+  height: 80vh;
+  background: #222;
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.2rem;
+  resize: none;
+  outline: none;
+}

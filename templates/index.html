@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Disappearing Writing App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="header">
+    <p>⏳ Time left: <span id="timer">5</span> seconds</p>
+  </div>
+  <div class="container">
+    <textarea id="writer" placeholder="Start typing..."></textarea>
+  </div>
+
+  <script>
+    let timer;
+    let countdown;
+    let timeLeft = 5;
+    const textarea = document.getElementById('writer');
+    const timerDisplay = document.getElementById('timer');
+
+    function updateCountdown() {
+      timerDisplay.textContent = timeLeft;
+    }
+
+    function resetTimer() {
+      clearTimeout(timer);
+      clearInterval(countdown);
+      timeLeft = 5;
+      updateCountdown();
+
+      countdown = setInterval(() => {
+        timeLeft--;
+        updateCountdown();
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+        }
+      }, 1000);
+
+      timer = setTimeout(() => {
+        textarea.value = '';
+        alert("You stopped typing. Everything is gone.");
+        timeLeft = 5;
+        updateCountdown();
+      }, 5000);
+    }
+
+    textarea.addEventListener('input', resetTimer);
+    window.onload = resetTimer;
+  </script>
+</body>
+</html>
